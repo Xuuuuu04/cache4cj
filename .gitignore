@@ -40,3 +40,4 @@ go-cache/
 # Claude 相关（私有配置）
 .claude/
 .spec-workflow/
+cangJie_docs/
