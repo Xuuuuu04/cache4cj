@@ -1,0 +1,75 @@
+结构体
+struct MemoryInfo
+(deprecated)
+public struct MemoryInfo
+功能：提供获取一些堆内存统计数据的接口。
+注意：
+未来版本即将废弃，使用全局函数
+getAllocatedHeapSize
+，
+getUsedHeapSize
+，
+getMaxHeapSize
+替代相关静态属性成员。
+static prop allocatedHeapSize
+public static prop allocatedHeapSize: Int64
+功能：获取仓颉堆已被使用的大小，单位为 byte。
+类型：
+Int64
+static prop heapPhysicalMemory
+public static prop heapPhysicalMemory: Int64
+功能：在 Linux 平台下获取仓颉堆实际占用的物理内存大小, 单位为 byte。在 Windows 及 macOs 平台下获取仓颉进程实际占用的物理内存大小, 单位为 byte。
+类型：
+Int64
+static prop maxHeapSize
+public static prop maxHeapSize: Int64
+功能：获取仓颉堆可以使用的最大值，单位为 byte。
+实例：
+import std.runtime.*
+main() {
+  println(MemoryInfo.maxHeapSize)
+}
+运行结果（以实际环境为准）：
+268435456
+类型：
+Int64
+struct ProcessorInfo
+(deprecated)
+public struct ProcessorInfo
+功能：提供获取一些处理器信息的接口。
+注意：
+未来版本即将废弃，使用
+getProcessorCount
+替代相关静态属性成员。
+static prop processorCount
+public static prop processorCount: Int64
+功能：获取处理器数量。
+类型：
+Int64
+struct ThreadInfo
+(deprecated)
+public struct ThreadInfo
+功能：提供获取一些仓颉线程统计数据的接口。
+注意：
+未来版本即将废弃，使用
+getBlockingThreadCount
+，
+getNativeThreadCount
+，
+getThreadCount
+替代相关静态属性成员。
+static prop blockingThreadCount
+public static prop blockingThreadCount: Int64
+功能：获取阻塞的仓颉线程数。
+类型：
+Int64
+static prop nativeThreadCount
+public static prop nativeThreadCount: Int64
+功能：获取物理线程数。
+类型：
+Int64
+static prop threadCount
+public static prop threadCount: Int64
+功能：获取仓颉当前的线程数量。
+类型：
+Int64

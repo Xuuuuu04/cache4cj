@@ -1,0 +1,2931 @@
+类
+class ArrayDeque<T>
+public class ArrayDeque<T> <: Deque<T> {
+    public init()
+    public init(capacity: Int64)
+}
+功能：ArrayDeque 是双端队列（deque）实现类，可以在双端队列的两端进行元素的插入和删除操作。ArrayDeque 是根据可调整大小的数组实现的，其容量会在插入元素的过程中不断地增长，默认每次扩容 50% 大小。ArrayDeque 的实现采用了循环队列的方式，在没有扩容的情况下，其插入、删除、查看等操作的时间复杂度为 O(1)。
+父类型：
+Deque
+<T>
+prop capacity
+public prop capacity: Int64
+功能：获取此双端队列的容量。
+类型：
+Int64
+prop first
+public prop first: ?T
+功能：获取双端队列的头部元素。如果双端队列为空，返回 None。
+类型：
+Option
+<T>
+prop last
+public prop last: ?T
+功能：获取双端队列的尾部元素。如果双端队列为空，返回 None。
+类型：
+Option
+<T>
+prop size
+public prop size: Int64
+功能：返回此双端队列中的元素个数。
+类型：
+Int64
+init()
+public init()
+功能：构造一个空的双端队列，其容量大小为默认值 8。
+init(Int64)
+public init(capacity: Int64)
+功能：构造一个具有指定容量的双端队列，当 capacity 小于默认容量 8 时，构造的
+ArrayDeque
+初始容量为 8 。
+参数：
+capacity:
+Int64
+- 指定的初始容量。
+异常：
+IllegalArgumentException
+- 如果参数的大小小于 0 则抛出异常。
+func addFirst(T)
+public func addFirst(element: T): Unit
+功能：在此双端队列头部插入元素。
+参数：
+element: T - 被插入到此双端队列的元素。
+func addLast(T)
+public func addLast(element: T): Unit
+功能：在此双端队列尾部插入元素。
+参数：
+element: T - 被插入到此双端队列的元素。
+func clear()
+public func clear(): Unit
+功能：清空此双端队列中的所有元素。
+func iterator()
+public func iterator(): Iterator<T>
+功能：获取此双端队列中元素的迭代器，其顺序为从前到后的顺序。
+返回值：
+Iterator
+<T> - 元素的迭代器。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断此双端队列是否为空。
+返回值：
+Bool
+- 如果为空，则返回
+true
+，否则，返回
+false
+。
+func removeFirst()
+public func removeFirst(): ?T
+功能：删除双端队列中的头部元素并返回该值，如果此双端队列为空，返回
+None
+。
+返回值：
+?T - 被删除的头部元素。
+func removeLast()
+public func removeLast(): ?T
+功能：删除双端队列中的尾部元素并返回该值，如果此双端队列为空，返回
+None
+。
+返回值：
+?T - 被删除的尾部元素。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：增加此双端队列的容量。
+将双端队列扩容 additional 大小，当 additional 小于等于零时，不发生扩容；当此双端队列剩余容量大于等于 additional 时，不发生扩容；当此双端队列剩余容量小于 additional 时，取（原始容量的1.5倍向下取整）与（additional + 已使用容量）两个值中的最大值进行扩容。
+参数：
+additional:
+Int64
+- 将要扩容的大小。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个数组，其包含此双端队列中的所有元素，且顺序为从前到后的顺序。
+返回值：
+Array
+<T> - T 类型数组。
+extend<T> ArrayDeque<T> <: ToString where T <: ToString
+extend<T> ArrayDeque<T> <: ToString where T <: ToString
+功能：为
+ArrayDeque
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：获取当前
+ArrayDeque
+<T>实例的字符串表示。
+该字符串包含双端队列内每个元素的字符串表示，其顺序为从前到后的顺序，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。
+class ArrayList<T>
+public class ArrayList<T> <: List<T> {
+    public init()
+    public init(capacity: Int64)
+    public init(size: Int64, initElement: (Int64) -> T)
+    public init(elements: Collection<T>)
+}
+功能：提供可变长度的数组的功能。
+ArrayList
+是一种线性的动态数组，与
+Array
+不同，它可以根据需要自动调整大小，并且在创建时不需要指定大小。
+说明：
+当向动态数组中添加元素时，如果数组已满，则会重新分配更大的内存空间，并将原有的元素复制到新的内存空间中。
+动态数组的优点是可以节省内存空间，并且可以根据需要自动调整大小，因此非常适合需要频繁添加或删除元素的情况。但是，动态数组的缺点是在重新分配内存空间时可能会导致性能下降，因此在使用动态数组时需要考虑这一点。
+父类型：
+List
+<T>
+prop size
+public prop size: Int64
+功能：返回此
+ArrayList
+中的元素个数。
+类型：
+Int64
+prop capacity
+public prop capacity: Int64
+功能：返回此
+ArrayList
+的容量大小。
+类型：
+Int64
+prop first
+public prop first: ?T
+功能：返回此
+ArrayList
+中的第一个元素，如果没有则返回 None。
+类型：
+Option
+<T>
+prop last
+public prop last: ?T
+功能：返回此
+ArrayList
+中的最后一个元素，如果没有则返回 None。
+类型：
+Option
+<T>
+init()
+public init()
+功能：构造一个初始容量大小为默认值
+16
+的
+ArrayList
+。
+init(Collection<T>)
+public init(elements: Collection<T>)
+功能：构造一个包含指定集合中所有元素的
+ArrayList
+。这些元素按照集合的迭代器返回的顺序排列。
+参数：
+elements:
+Collection
+<T> - 传入集合。
+init(Int64)
+public init(capacity: Int64)
+功能：构造一个初始容量为指定大小的
+ArrayList
+。
+参数：
+capacity:
+Int64
+- 指定的初始容量大小。
+异常：
+IllegalArgumentException
+- 如果参数的大小小于 0 则抛出异常。
+init(Int64, (Int64) -> T)
+public init(size: Int64, initElement: (Int64) -> T)
+功能：构造具有指定初始元素个数和指定规则函数的
+ArrayList
+。该构造函数根据参数 size 设置
+ArrayList
+的容量。
+参数：
+size:
+Int64
+- 初始化函数元素个数。
+initElement: (
+Int64
+) ->T - 传入初始化函数。
+异常：
+IllegalArgumentException
+- 如果 size 小于 0 则抛出异常。
+static func of(Array<T>)
+public static func of(elements: Array<T>): ArrayList<T>
+功能：构造一个包含指定数组中所有元素的
+ArrayList
+。
+参数：
+elements:
+Array
+<T> - 传入数组。
+返回值：
+ArrayList
+<T> - 元素为 T 类型的 ArrayList。
+func add(T)
+public func add(element: T): Unit
+功能：将指定的元素附加到此
+ArrayList
+的末尾。
+参数：
+element: T - 插入的元素，类型为 T。
+示例：
+使用示例见
+ArrayList 的 add 函数
+。
+func add(Collection<T>)
+public func add(all!: Collection<T>): Unit
+功能：将指定集合中的所有元素附加到此
+ArrayList
+的末尾。
+函数会按照迭代器顺序遍历入参中的集合，并且将所有元素插入到此
+ArrayList
+的尾部。
+参数：
+all!:
+Collection
+<T> - 需要插入的元素的集合。
+func add(T, Int64)
+public func add(element: T, at!: Int64): Unit
+功能：在此
+ArrayList
+中的指定位置插入指定元素。
+参数：
+element: T - 要插入的 T 类型元素。
+at!:
+Int64
+- 插入元素的目标索引。
+异常：
+IndexOutOfBoundsException
+- 当 at 超出范围时，抛出异常。
+示例：
+使用示例见
+ArrayList 的 add 函数
+。
+func add(Collection<T>, Int64)
+public func add(all!: Collection<T>, at!: Int64): Unit
+功能：从指定位置开始，将指定集合中的所有元素插入此
+ArrayList
+。
+函数会按照迭代器顺序遍历入参中的集合，并且将所有元素插入到指定位置，原先在指定位置及其后的元素会后移。
+参数：
+all!:
+Collection
+<T> - 要插入的 T 类型元素集合。
+at!:
+Int64
+- 插入集合的目标索引。
+异常：
+IndexOutOfBoundsException
+- 当 at 超出范围时，抛出异常。
+示例：
+使用示例见
+ArrayList 的 add 函数
+。
+func clear()
+public func clear(): Unit
+功能：从此
+ArrayList
+中删除所有元素。
+示例：
+使用示例见
+ArrayList 的 remove/clear/slice 函数
+。
+func clone()
+public func clone(): ArrayList<T>
+功能：返回此
+ArrayList
+实例的拷贝（浅拷贝）。
+返回值：
+ArrayList
+<T> - 返回新
+ArrayList
+<T>。
+func get(Int64)
+public func get(index: Int64): ?T
+功能：返回此
+ArrayList
+中指定位置的元素。
+参数：
+index:
+Int64
+- 要返回的元素的索引。
+返回值：
+?T - 返回指定位置的元素，如果 index 大小小于 0 或者大于等于
+ArrayList
+中的元素数量，返回 None。
+示例：
+使用示例见
+ArrayList 的 get/set 函数
+。
+func getRawArray()
+public unsafe func getRawArray(): Array<T>
+功能：返回
+ArrayList
+的原始数据。
+注意：
+这是一个 unsafe 的接口，使用处需要在 unsafe 上下文中。
+原始数据是指
+ArrayList
+底层实现的数组，其大小大于等于
+ArrayList
+中的元素数量，且索引大于等于
+ArrayList
+大小的位置中可能包含有未初始化的元素，对其进行访问可能会产生未定义的行为。
+返回值：
+Array
+<T> -
+ArrayList
+的底层原始数据。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断
+ArrayList
+是否为空。
+返回值：
+Bool
+- 如果为空，则返回
+true
+，否则，返回
+false
+。
+func iterator()
+public func iterator(): Iterator<T>
+功能：返回此
+ArrayList
+中元素的迭代器。
+返回值：
+Iterator
+<T> -
+ArrayList
+中元素的迭代器。
+func remove(Int64)
+public func remove(at!: Int64): T
+功能：删除此
+ArrayList
+中指定位置的元素。
+参数：
+at!:
+Int64
+- 被删除元素的索引。
+返回值：
+T - 被移除的元素。
+异常：
+IndexOutOfBoundsException
+- 当 at 超出范围时，抛出异常。
+示例：
+使用示例见
+ArrayList 的 remove/clear/slice 函数
+。
+func remove(Range<Int64>)
+public func remove(range: Range<Int64>): Unit
+功能：删除此
+ArrayList
+中
+Range
+范围所包含的所有元素。
+注意：
+如果参数 range 是使用
+Range
+构造函数构造的
+Range
+实例，hasEnd 为 false 时，end 值不生效，且不受构造时传入的 isClosed 的值的影响，数组切片取到原数组最后一个元素。
+参数：
+range:
+Range
+<
+Int64
+> - 需要被删除的元素的范围。
+异常：
+IllegalArgumentException
+- 当 range 的
+step
+不等于 1 时抛出异常。
+IndexOutOfBoundsException
+- 当 range 的 start 或 end 小于 0，或 end 大于
+Array
+的长度时抛出。
+func removeIf((T) -> Bool)
+public func removeIf(predicate: (T) -> Bool): Unit
+功能：删除此
+ArrayList
+中满足给定 lambda 表达式或函数的所有元素。
+参数：
+predicate: (T) ->
+Bool
+- 传递判断删除的条件。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+ArrayList
+内元素时，抛出异常。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：增加此
+ArrayList
+实例的容量。
+将
+ArrayList
+扩容 additional 大小，当 additional 小于等于零时，不发生扩容；当
+ArrayList
+剩余容量大于等于 additional 时，不发生扩容；当
+ArrayList
+剩余容量小于 additional 时，取（原始容量的1.5倍向下取整）与（additional + 已使用容量）两个值中的最大值进行扩容。
+参数：
+additional:
+Int64
+- 将要扩容的大小。
+异常：
+OverflowException
+- 当additional + 已使用容量超过Int64.Max时，抛出异常。
+func reverse()
+public func reverse(): Unit
+功能：反转此
+ArrayList
+中元素的顺序。
+func slice(Range<Int64>)
+public func slice(range: Range<Int64>): ArrayList<T>
+功能：以传入参数 range 作为索引，返回索引对应的
+ArrayList
+<T>。
+注意：
+如果参数 range 是使用
+Range
+构造函数构造的
+Range
+实例，有如下行为：
+start 的值就是构造函数传入的值本身，不受构造时传入的 hasStart 的值的影响。
+hasEnd 为 false 时，end 值不生效，且不受构造时传入的 isClosed 的值的影响，该数组切片取到原数组最后一个元素。
+参数：
+range:
+Range
+<
+Int64
+> - 传递切片的范围。
+返回值：
+ArrayList
+<T> - 切片所得的数组。
+异常：
+IllegalArgumentException
+- 当 range.
+step
+不等于 1 时，抛出异常。
+IndexOutOfBoundsException
+- 当 range 无效时，抛出异常。
+示例：
+使用示例见
+ArrayList 的 remove/clear/slice 函数
+。
+func sortBy((T, T) -> Ordering)
+(deprecated)
+public func sortBy(comparator!: (T, T) -> Ordering): Unit
+功能：对数组中的元素进行非稳定排序。
+通过传入的比较函数，根据其返回值
+Ordering
+类型的结果，可对数组进行自定义排序comparator: (t1: T, t2: T) ->
+Ordering
+，如果 comparator 的返回值为
+Ordering
+.GT，排序后 t1 在 t2后；如果 comparator 的返回值为
+Ordering
+.LT，排序后 t1 在t2 前；如果 comparator 的返回值为
+Ordering
+.EQ，且为稳定排序，那么 t1 在 t2 之前； 如果 comparator 的返回值为
+Ordering
+.EQ，且为不稳定排序，那么 t1，t2 顺序不确定。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+参数：
+comparator!: (T, T) ->
+Ordering
+- (T, T) ->
+Ordering
+类型。
+func sortBy(Bool, (T, T) -> Ordering)
+(deprecated)
+public func sortBy(stable!: Bool, comparator!: (T, T) -> Ordering): Unit
+功能：对数组中的元素进行排序。
+通过传入的比较函数，根据其返回值
+Ordering
+类型的结果，可对数组进行自定义排序comparator: (t1: T, t2: T) ->
+Ordering
+，如果 comparator 的返回值为
+Ordering
+.GT，排序后 t1 在 t2后；如果 comparator 的返回值为
+Ordering
+.LT，排序后 t1 在t2 前；如果 comparator 的返回值为
+Ordering
+.EQ，且为稳定排序，那么 t1 在 t2 之前； 如果 comparator 的返回值为
+Ordering
+.EQ，且为不稳定排序，那么 t1，t2 顺序不确定。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+参数：
+stable!:
+Bool
+- 是否使用稳定排序。
+comparator!: (T, T) ->
+Ordering
+- (T, T) ->
+Ordering
+类型。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个数组，其中包含此列表中按正确顺序排列的所有元素。
+返回值：
+Array
+<T> - T 类型数组。
+operator func [](Int64)
+public operator func [](index: Int64): T
+功能：操作符重载 - get。
+参数：
+index:
+Int64
+- 表示 get 接口的索引。
+返回值：
+T - 索引位置的元素的值。
+异常：
+IndexOutOfBoundsException
+- 当 index 超出范围时，抛出异常。
+operator func [](Int64, T)
+public operator func [](index: Int64, value!: T): Unit
+功能：操作符重载，通过下标运算符用指定的元素替换此列表中指定位置的元素。
+参数：
+index:
+Int64
+- 要设置的索引值。
+value!: T - 要设置的 T 类型的值。
+异常：
+IndexOutOfBoundsException
+- 当 index 超出范围时，抛出异常。
+operator func [](Range<Int64>)
+public operator func [](range: Range<Int64>): ArrayList<T>
+功能：运算符重载 - 切片。
+注意：
+如果参数 range 是使用
+Range
+构造函数构造的
+Range
+实例，有如下行为：
+start 的值就是构造函数传入的值本身，不受构造时传入的 hasStart 的值的影响。
+hasEnd 为 false 时，end 值不生效，且不受构造时传入的 isClosed 的值的影响，数组切片取到原数组最后一个元素。
+切片操作返回的
+ArrayList
+为全新的对象，与原
+ArrayList
+无引用关系。
+参数：
+range:
+Range
+<
+Int64
+> - 传递切片的范围。
+返回值：
+ArrayList
+<T> - 切片所得的数组。
+异常：
+IllegalArgumentException
+- 当 range.
+step
+不等于 1 时，抛出异常。
+IndexOutOfBoundsException
+- 当 range 无效时，抛出异常。
+extend<T> ArrayList<T> <: Equatable<ArrayList<T>> where T <: Equatable<T>
+extend<T> ArrayList<T> <: Equatable<ArrayList<T>> where T <: Equatable<T>
+功能：为
+ArrayList
+<T> 类型扩展
+Equatable
+<
+ArrayList
+<T>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+ArrayList
+<T>>
+operator func ==(ArrayList<T>)
+public operator func ==(that: ArrayList<T>): Bool
+功能：判断当前实例与参数指向的
+ArrayList
+实例是否相等。
+两个数组相等指的是两者对应位置的元素分别相等。
+参数：
+that:
+ArrayList
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(ArrayList<T>)
+public operator func !=(that: ArrayList<T>): Bool
+功能：判断当前实例与参数指向的
+ArrayList
+实例是否不等。
+参数：
+that:
+ArrayList
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+func contains(T)
+public func contains(element: T): Bool
+功能：判断当前数组中是否含有指定元素
+element
+。
+参数：
+element: T - 待寻找的元素。
+返回值：
+Bool
+- 如果数组中包含指定元素，返回 true，否则返回 false。
+extend<T> ArrayList<T> <: SortExtension where T <: Comparable<T>
+(deprecated)
+extend<T> ArrayList<T> where T <: Comparable<T>
+功能：为
+ArrayList
+<T> 扩展
+SortExtension
+接口，支持数组排序。
+注意：
+未来版本即将废弃。
+父类型：
+SortExtension
+func sort()
+(deprecated)
+public func sort(): Unit
+功能：将当前数组内元素以升序的方式非稳定排序。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+func sort(Bool)
+(deprecated)
+public func sort(stable!: Bool): Unit
+功能：将当前数组内元素以升序的方式排序。
+参数：
+stable!:
+Bool
+- 是否使用稳定排序。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+func sortDescending()
+(deprecated)
+public func sortDescending(): Unit
+功能：将当前数组内元素以降序的方式非稳定排序。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+func sortDescending(Bool)
+(deprecated)
+public func sortDescending(stable!: Bool): Unit
+功能：将当前数组内元素以降序的方式排序。
+参数：
+stable!:
+Bool
+- 是否使用稳定排序。
+注意：
+未来版本即将废弃，使用
+sort
+替代。
+extend<T> ArrayList<T> <: ToString where T <: ToString
+extend<T> ArrayList<T> <: ToString where T <: ToString
+功能：为
+ArrayList
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前数组转换为字符串。
+该字符串包含数组内每个元素的字符串表示，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。
+class ArrayQueue<T>
+public class ArrayQueue<T> <: Queue<T> {
+    public init()
+    public init(capacity: Int64)
+}
+功能：基于数组实现的循环队列数据结构。
+父类型：
+Queue
+<T>
+prop capacity
+public prop capacity: Int64
+功能：获取此队列的容量。
+类型：
+Int64
+prop size
+public prop size: Int64
+功能：返回此队列中的元素个数。
+类型：
+Int64
+init()
+public init()
+功能：构造一个空的队列，其容量大小为默认值 8。
+init(Int64)
+public init(capacity: Int64)
+功能：构造一个具有指定容量的队列，当 capacity 小于默认容量 8 时，构造的
+ArrayQueue
+初始容量为 8 。
+参数：
+capacity:
+Int64
+- 指定的初始容量。
+异常：
+IllegalArgumentException
+- 如果参数的大小小于 0 则抛出异常。
+func add(T)
+public func add(element: T): Unit
+功能：在此队列尾部插入元素。
+参数：
+element: T - 被插入到此双端队列的元素。
+func clear()
+public func clear(): Unit
+功能：清空此队列中的所有元素。
+func iterator()
+public func iterator(): Iterator<T>
+功能：获取此队列中元素的迭代器，其顺序为从前到后的顺序。
+返回值：
+Iterator
+<T> - 元素的迭代器。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断此队列是否为空。
+返回值：
+Bool
+- 如果为空，则返回
+true
+，否则，返回
+false
+。
+func peek()
+public func peek():?T
+功能：查看此队列头部元素。此操作不会删除元素。
+返回值：
+?T - 队列的头部元素，如果队列为空，返回
+None
+。
+func remove()
+public func remove(): ?T
+功能：删除队列中的头部元素并返回该值，如果此队列为空，返回
+None
+。
+返回值：
+?T - 被删除的头部元素。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：增加此队列的容量。
+将队列扩容 additional 大小，当 additional 小于等于零时，不发生扩容；当此队列剩余容量大于等于 additional 时，不发生扩容；当此队列剩余容量小于 additional 时，取（原始容量的 1.5 倍向下取整）与（additional + 已使用容量）两个值中的最大值进行扩容。
+参数：
+additional:
+Int64
+- 将要扩容的大小。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个数组，其包含此队列中的所有元素，且顺序为从前到后的顺序。
+返回值：
+Array
+<T> - T 类型数组。
+extend<T> ArrayQueue<T> <: ToString where T <: ToString
+extend<T> ArrayQueue<T> <: ToString where T <: ToString
+功能：为
+ArrayQueue
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：获取当前
+ArrayQueue
+<T>实例的字符串表示。
+该字符串包含双端队列内每个元素的字符串表示，其顺序为从前到后的顺序，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。
+class ArrayStack<T>
+public class ArrayStack<T> <: Stack<T> {
+    public init(capacity: Int64)
+    public init()
+}
+功能：
+ArrayStack
+是一种基于数组
+Array
+实现的栈
+Stack
+数据结构。ArrayStack 的实现方式是使用一个数组来存储栈中的元素，同时使用一个指针来指向栈顶元素的位置。
+ArrayStack
+只支持后进先出（Last In First Out，LIFO），只能在头部进行插入删除操作，并且
+ArrayStack
+会根据实际需要进行扩容。
+父类型：
+Stack
+<T>
+prop capacity
+public prop capacity: Int64
+功能：栈的容量大小。
+类型：
+Int64
+prop size
+public prop size: Int64
+功能：栈中元素的数量。
+类型：
+Int64
+func init()
+public init()
+功能：构造一个空的
+ArrayStack
+，其初始容量为 8 。
+func init(Int64)
+public init(capacity: Int64)
+功能：构造一个空的
+ArrayStack
+，其初始容量为指定的值。当 capacity 小于默认容量 8 时，构造的
+ArrayStack
+初始容量为 8 。
+参数：
+capacity:
+Int64
+- 初始容量大小。
+异常：
+IllegalArgumentException
+- 当入参为负数时，抛出此异常。
+func add(T)
+public func add(element: T): Unit
+功能：在栈顶添加元素。
+参数：
+element: T - 添加的元素。
+func clear()
+public func clear(): Unit
+功能：清空当前的
+ArrayStack
+。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断此
+ArrayStack
+是否为空。
+返回值：
+Bool
+- 如果为空，返回 true，否则返回 false。
+func iterator()
+public func iterator(): Iterator<T>
+功能：返回此
+ArrayStack
+中元素的迭代器，其顺序为出栈的顺序。
+返回值：
+Iterator
+<T> - 栈中元素的迭代器。
+func peek()
+public func peek(): ?T
+功能：获取栈顶的元素，该操作不会做出栈操作，只查看栈顶的元素。当栈为空时，返回
+None
+。
+返回值：
+?T - 栈顶的元素。
+func remove()
+public func remove(): ?T
+功能：出栈操作，删除栈顶的元素并且返回这个元素。当栈为空时，返回
+None
+。
+返回值：
+?T - 被删除的栈顶元素。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：为当前
+ArrayStack
+预留出相应的空间。当 additional 小于等于零时，不发生扩容；如果当前剩余空间大小大于等于 additional，不进行扩容操作，否则当前
+ArrayStack
+会扩容至 size + additional 大小。
+参数：
+additional:
+Int64
+- 预留的剩余容量大小。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个数组，其中元素为栈中的元素，顺序为栈的出栈顺序。
+返回值：
+Array
+<T> - T 类型数组。
+extend<T> ArrayStack<T> <: ToString where T <: ToString
+extend<T> ArrayStack<T> <: ToString where T <: ToString
+功能：为 ArrayStack 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：获取当前
+ArrayStack
+<T> 实例的字符串表示。
+该字符串包含栈内每个元素的字符串表示，其顺序为从后到前的顺序。形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 当前栈的字符串表示。
+class HashMapIterator<K, V> where K <: Hashable & Equatable<K>
+public class HashMapIterator<K, V> <: Iterator<(K, V)> where K <: Hashable & Equatable<K> {
+    public init(map: HashMap<K, V>)
+}
+功能：此类主要实现
+HashMap
+的迭代器功能。
+父类型：
+Iterator
+<(K, V)>
+init(HashMap<K, V>)
+public init(map: HashMap<K, V>)
+功能：创建
+HashMapIterator
+<K, V> 实例。
+参数：
+map
+:
+HashMap
+<K, V> - 传入
+HashMap
+<K, V>。
+func next()
+public func next(): ?(K, V)
+功能：返回迭代器中的下一个元素。
+返回值：
+?(K, V) - 迭代器中的下一个元素，用
+Option
+封装。
+异常：
+ConcurrentModificationException
+- 当函数检测到不同步的并发修改，抛出异常。
+func remove()
+public func remove(): Option<(K, V)>
+功能：删除此
+HashMap
+迭代器的 next 函数返回的元素，此函数只能在 next 函数调用时调用一次。
+返回值：
+Option
+<(K, V)> - 返回被删除的元素。
+异常：
+ConcurrentModificationException
+- 当函数检测到不同步的并发修改，抛出异常。
+class HashMap<K, V> where K <: Hashable & Equatable<K>
+public class HashMap<K, V> <: Map<K, V> where K <: Hashable & Equatable<K> {
+    public init()
+    public init(elements: Array<(K, V)>)
+    public init(elements: Collection<(K, V)>)
+    public init(capacity: Int64)
+    public init(size: Int64, initElement: (Int64) -> (K, V))
+}
+功能：
+Map
+接口的哈希表实现。
+哈希表是一种常用的数据结构，它可以用来快速地查找、插入和删除数据。哈希表的基本原理是将数据映射到一个数组中，这个数组称为哈希表。每个数据元素都有一个对应的哈希值，这个哈希值可以用来确定该元素在哈希表中的位置。
+哈希表的特点是快速的查找、插入和删除操作，时间复杂度通常是O(1)。由于哈希表底层的数组大小是动态的，所以哈希表不能保证元素的顺序不可变。
+父类型：
+Map
+<K, V>
+prop capacity
+public prop capacity: Int64
+功能：返回
+HashMap
+的容量。
+返回值：
+Int64
+-
+HashMap
+的容量。
+prop size
+public prop size: Int64
+功能：返回键值对的个数。
+类型：
+Int64
+init()
+public init()
+功能：构造一个具有默认初始容量为16和默认负载因子为空的
+HashMap
+。
+init(Array<(K, V)>)
+public init(elements: Array<(K, V)>)
+功能：通过传入的键值对数组构造一个
+HashMap
+。
+该构造函数根据传入数组的 size 设置
+HashMap
+的容量。由于
+HashMap
+内部不允许键重复，当
+Array
+中存在重复的键时，按照迭代器顺序，出现在后面的键值对将会覆盖前面的键值对。
+参数：
+elements:
+Array
+<(K, V)> - 初始化该
+HashMap
+的键值对数组。
+init(Collection<(K, V)>)
+public init(elements: Collection<(K, V)>)
+功能：通过传入的键值对集合构造一个
+HashMap
+。
+该构造函数根据传入集合 elements 的 size 设置
+HashMap
+的容量。由于
+HashMap
+内部不允许键重复，当
+Array
+中存在重复的键时，按照迭代器顺序，出现在后面的键值对将会覆盖前面的键值对。
+参数：
+elements:
+Collection
+<(K, V)> - 初始化该
+HashMap
+的键值对集合。
+init(Int64)
+public init(capacity: Int64)
+功能：构造一个带有传入容量大小的
+HashMap
+。
+参数：
+capacity:
+Int64
+- 初始化容量大小。
+异常：
+IllegalArgumentException
+- 如果 capacity 小于 0 则抛出异常。
+init(Int64, (Int64) -> (K, V))
+public init(size: Int64, initElement: (Int64) -> (K, V))
+功能：通过传入的元素个数 size 和函数规则来构造
+HashMap
+。
+构造出的
+HashMap
+的容量受 size 大小影响。由于
+HashMap
+内部不允许键重复，当函数 initElement 生成相同的键时，后构造的键值对将会覆盖之前出现的键值对。
+参数：
+size:
+Int64
+- 初始化该
+HashMap
+的函数规则。
+initElement: (
+Int64
+) -> (K, V) - 初始化该
+HashMap
+的函数规则。
+异常：
+IllegalArgumentException
+- 如果 size 小于 0 则抛出异常。
+func add(K, V)
+public func add(key: K, value: V): Option<V>
+功能：将键值对放入
+HashMap
+中。
+对于
+HashMap
+中已有的键，该键的值将被新值替换，并且返回旧的值。
+参数：
+key: K - 要放置的键。
+value: V - 要分配的值。
+返回值：
+Option
+<V> - 如果赋值之前 key 存在，旧的 value 用
+Option
+封装；否则，返回
+Option
+<V>.None。
+示例：
+使用示例见
+HashMap 的 get/add/contains 函数
+。
+func add(Collection<(K, V)>)
+public func add(all!: Collection<(K, V)>): Unit
+功能：按照 elements 的迭代器顺序将新的键值对集合放入
+HashMap
+中。
+对于
+HashMap
+中已有的键，该键的值将被新值替换。
+参数：
+all!:
+Collection
+<(K, V)> - 需要添加进
+HashMap
+的键值对集合。
+示例：
+使用示例见
+HashMap 的 add/remove/clear 函数
+。
+func addIfAbsent(K, V)
+func addIfAbsent(key: K, value: V): ?V
+功能：如果 key 不在当前
+HashMap
+中，添加指定键值对 key-value。否则不做修改。
+参数：
+key: K - 待添加键值对的键。
+value: V - 待添加键值对的值。
+返回值：
+?V - 如果调用该函数时当前
+HashMap
+中已有指定的 key，返回该 key 对应的旧值，否则返回 None。
+func clear()
+public func clear(): Unit
+功能：清除所有键值对。
+示例：
+使用示例见
+HashMap 的 add/remove/clear 函数
+。
+func clone()
+public func clone(): HashMap<K, V>
+功能：克隆
+HashMap
+。
+返回值：
+HashMap
+<K, V> - 返回一个
+HashMap
+。
+func contains(K)
+public func contains(key: K): Bool
+功能：判断是否包含指定键的映射。
+参数：
+key: K - 传递要判断的 key。
+返回值：
+Bool
+- 如果存在，则返回 true；否则，返回 false。
+示例：
+使用示例见
+HashMap 的 get/add/contains 函数
+。
+func contains(Collection<K>)
+public func contains(all!: Collection<K>): Bool
+功能：判断是否包含指定集合中所有键的映射。
+参数：
+all!:
+Collection
+<K> - 键传递待判断的 keys。
+返回值：
+Bool
+- 如果都包含，则返回 true；否则，返回 false。
+func entryView(K)
+public func entryView(key: K): MapEntryView<K, V>
+功能：如果不包含特定键，返回一个空的引用视图。如果包含特定键，则返回该键对应的元素的引用视图。
+参数：
+key: K - 要添加的键值对的键。
+返回值：
+MapEntryView
+<K, V> - 一个引用视图。
+func get(K)
+public func get(key: K): ?V
+功能：返回指定键映射到的值，如果
+HashMap
+不包含指定键的映射，则返回
+Option
+<V>.None。
+参数：
+key: K - 传入的键。
+返回值：
+?V - 键对应的值。用
+Option
+封装。
+示例：
+使用示例见
+HashMap 的 get/add/contains 函数
+。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断
+HashMap
+是否为空，如果是，则返回 true；否则，返回 false。
+返回值：
+Bool
+-
+HashMap
+是否为空。
+func iterator()
+public func iterator(): HashMapIterator<K, V>
+功能：返回 HashMap 的迭代器。
+返回值：
+HashMapIterator
+<K, V> - 返回
+HashMap
+的迭代器。
+func keys()
+public func keys(): EquatableCollection<K>
+功能：返回
+HashMap
+中所有的 key，并将所有 key 存储在一个 Keys 容器中。
+返回值：
+EquatableCollection
+<K> - 保存所有返回的 key。
+func remove(Collection<K>)
+public func remove(all!: Collection<K>): Unit
+功能：从此
+HashMap
+中删除指定集合中键的映射（如果存在）。
+参数：
+all!:
+Collection
+<K> - 传入要删除的键的集合。
+func remove(K)
+public func remove(key: K): Option<V>
+功能：从此
+HashMap
+中删除指定键的映射（如果存在）。
+参数：
+key: K - 传入要删除的 key。
+返回值：
+Option
+<V> - 被从
+HashMap
+中移除的键对应的值，用
+Option
+封装，如果
+HashMap
+中不存该键，返回 None 。
+示例：
+使用示例见
+HashMap 的 add/remove/clear 函数
+。
+func removeIf((K, V) -> Bool)
+public func removeIf(predicate: (K, V) -> Bool): Unit
+功能：传入 lambda 表达式，如果满足条件，则删除对应的键值对。
+该函数会遍历整个
+HashMap
+，所以满足
+predicate(K, V) == true
+的键值对都会被删除。
+参数：
+predicate: (K, V) ->
+Bool
+- 传递一个 lambda 表达式进行判断。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+HashMap
+内键值对时，抛出异常。
+func replace(K, V)
+func replace(key: K, value: V): ?V
+功能：如果当前
+HashMap
+中已有指定 key，将其值修改为 value。否则不做修改。
+参数：
+key: K - 待修改键值对的键。
+value: V - 待修改键值对的新值。
+返回值：
+?V - 如果当前
+HashMap
+中已有指定 key，返回其旧值。否则返回 None。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：扩容当前的
+HashMap
+。
+将
+HashMap
+扩容 additional 大小当 additional 小于等于零时，不发生扩容；当
+HashMap
+剩余容量大于等于 additional 时，不发生扩容；当
+HashMap
+剩余容量小于 additional 时，取（原始容量的1.5倍向下取整）与（additional + 已使用容量）中的最大值进行扩容。
+参数：
+additional:
+Int64
+- 将要扩容的大小。
+异常：
+OverflowException
+- 当additional + 已使用容量超过Int64.Max时，抛出异常。
+func toArray()
+public func toArray(): Array<(K, V)>
+功能：构造一个包含
+HashMap
+内键值对的数组，并返回。
+返回值：
+Array
+<(K, V)> - 包含容器内所有键值对的数组。
+func values()
+public func values(): Collection<V>
+功能：返回
+HashMap
+中包含的值，并将所有的 value 存储在一个 Values 容器中。
+返回值：
+Collection
+<V> - 保存所有返回的 value。
+operator func [](K, V)
+public operator func [](key: K, value!: V): Unit
+功能：运算符重载 add 方法，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
+参数：
+key: K - 传递值进行判断。
+value!: V - 传递要设置的值。
+operator func [](K)
+public operator func [](key: K): V
+功能：运算符重载 get 方法，如果键存在，返回键对应的值。
+参数：
+key: K - 传递值进行判断。
+返回值：
+V - 与键对应的值。
+异常：
+NoneValueException
+- 如果该
+HashMap
+不存在该键，抛此异常。
+extend<K, V> HashMap<K, V> <: Equatable<HashMap<K, V>> where V <: Equatable<V>
+extend<K, V> HashMap<K, V> <: Equatable<HashMap<K, V>> where V <: Equatable<V>
+功能：为
+HashMap
+<K, V> 类型扩展
+Equatable
+<
+HashMap
+<K, V>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+HashMap
+<K, V>>
+operator func ==(HashMap<K, V>)
+public operator func ==(right: HashMap<K, V>): Bool
+功能：判断当前实例与参数指向的
+HashMap
+<K, V> 实例是否相等。
+两个
+HashMap
+<K, V> 相等指的是其中包含的键值对完全相等。
+参数：
+right:
+HashMap
+<K, V> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(HashMap<K, V>)
+public operator func !=(right: HashMap<K, V>): Bool
+功能：判断当前实例与参数指向的
+HashMap
+<K, V> 实例是否不等。
+参数：
+right:
+HashMap
+<K, V> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+extend<K, V> HashMap<K, V> <: ToString where V <: ToString, K <: ToString
+extend<K, V> HashMap<K, V> <: ToString where V <: ToString, K <: ToString
+功能：为
+HashMap
+<K, V> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前
+HashMap
+<K, V> 实例转换为字符串。
+该字符串包含
+HashMap
+<K, V> 内每个键值对的字符串表示，形如："[(k1, v1), (k2, v2), (k3, v3)]"。
+返回值：
+String
+- 转换得到的字符串。
+class HashSet<T> where T <: Hashable & Equatable<T>
+public class HashSet<T> <: Set<T> where T <: Hashable & Equatable<T> {
+    public init()
+    public init(elements: Collection<T>)
+    public init(elements: Array<T>)
+    public init(capacity: Int64)
+    public init(size: Int64, initElement: (Int64) -> T)
+}
+功能：基于
+HashMap
+实现的
+Set
+接口的实例。
+HashSet
+中的元素是无序的，不允许有重复元素。当我们向
+HashSet
+中添加元素时，
+HashSet
+会根据元素的哈希值来确定该元素在哈希表中的位置。
+提示：
+HashSet
+是基于
+HashMap
+实现的，因此
+HashSet
+的容量、内存布局、时间性能等都和
+HashMap
+相同。
+父类型：
+Set
+<T>
+prop size
+public prop size: Int64
+功能：返回此
+HashSet
+的元素个数。
+类型：
+Int64
+init(Int64, (Int64) -> T)
+public init(size: Int64, initElement: (Int64) -> T)
+功能：通过传入的函数元素个数 size 和函数规则来构造
+HashSet
+。构造出的
+HashSet
+的容量受 size 大小影响。
+参数：
+size:
+Int64
+- 初始化函数中元素的个数。
+initElement: (
+Int64
+) ->T - 初始化函数规则。
+异常：
+IllegalArgumentException
+- 如果 size 小于 0，抛出异常。
+init()
+public init()
+功能：构造一个空的
+HashSet
+，初始容量为 16 。
+init(Array<T>)
+public init(elements: Array<T>)
+功能：使用传入的数组构造
+HashSet
+。该构造函数根据传入数组 elements 的 size 设置
+HashSet
+的容量。
+参数：
+elements:
+Array
+<T> - 初始化
+HashSet
+的数组。
+init(Collection<T>)
+public init(elements: Collection<T>)
+功能：使用传入的集合构造
+HashSet
+。该构造函数根据传入集合 elements 的 size 设置
+HashSet
+的容量。
+参数：
+elements:
+Collection
+<T> - 初始化
+HashSet
+的集合。
+init(Int64)
+public init(capacity: Int64)
+功能：使用传入的容量构造一个
+HashSet
+。
+参数：
+capacity:
+Int64
+- 初始化容量大小。
+异常：
+IllegalArgumentException
+- 如果 capacity 小于 0，抛出异常。
+func add(T)
+public func add(element: T): Bool
+功能：将指定的元素添加到
+HashSet
+中, 若添加的元素在
+HashSet
+中存在, 则添加失败。
+参数：
+element: T - 指定的元素。
+返回值：
+Bool
+- 如果添加成功，则返回 true；否则，返回 false。
+示例：
+使用示例见
+HashSet 的 add/iterator/remove 函数
+。
+func add(Collection<T>)
+public func add(all!: Collection<T>): Unit
+功能：添加
+Collection
+中的所有元素至此
+HashSet
+中，如果元素存在，则不添加。
+参数：
+all!:
+Collection
+<T> - 需要被添加的元素的集合。
+prop capacity
+public prop capacity: Int64
+功能：返回此
+HashSet
+的内部数组容量大小。
+注意：
+容量大小不一定等于
+HashSet
+的 size。
+返回值：
+Int64
+- 返回此
+HashSet
+的内部数组容量大小。
+func clear()
+public func clear(): Unit
+功能：从此
+HashSet
+中移除所有元素。
+func clone()
+public func clone(): HashSet<T>
+功能：克隆
+HashSet
+。
+返回值：
+HashSet
+<T> - 返回克隆到的
+HashSet
+。
+func contains(T)
+public func contains(element: T): Bool
+功能：判断
+HashSet
+是否包含指定元素。
+参数：
+element: T - 指定的元素。
+返回值：
+Bool
+- 如果包含指定元素，则返回 true；否则，返回 false。
+func contains(Collection<T>)
+public func contains(all!: Collection<T>): Bool
+功能：判断
+HashSet
+是否包含指定
+Collection
+中的所有元素。
+参数：
+all!:
+Collection
+<T> - 指定的元素集合。
+返回值：
+Bool
+- 如果此
+HashSet
+包含
+Collection
+中的所有元素，则返回 true；否则，返回 false。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断
+HashSet
+是否为空。
+返回值：
+Bool
+- 如果为空，则返回 true；否则，返回 false。
+func iterator()
+public func iterator(): Iterator<T>
+功能：返回此
+HashSet
+的迭代器。
+返回值：
+Iterator
+<T> - 返回此
+HashSet
+的迭代器。
+示例：
+使用示例见
+HashSet 的 add/iterator/remove 函数
+。
+func remove(T)
+public func remove(element: T): Bool
+功能：如果指定元素存在于此
+HashSet
+中，则将其移除。
+参数：
+element: T - 需要被移除的元素。
+返回值：
+Bool
+- true，表示移除成功；false，表示移除失败。
+示例：
+使用示例见
+HashSet 的 add/iterator/remove 函数
+。
+func remove(Collection<T>)
+public func remove(all!: Collection<T>): Unit
+功能：移除此
+HashSet
+中那些也包含在指定
+Collection
+中的所有元素。
+参数：
+all!:
+Collection
+<T> - 需要从此
+HashSet
+中移除的元素的集合。
+func removeIf((T) -> Bool)
+public func removeIf(predicate: (T) -> Bool): Unit
+功能：传入 lambda 表达式，如果满足
+true
+条件，则删除对应的元素。
+参数：
+predicate: (T) ->
+Bool
+- 是否删除元素的判断条件。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+HashSet
+内元素时，抛出异常。
+func reserve(Int64)
+public func reserve(additional: Int64): Unit
+功能：将
+HashSet
+扩容 additional 大小，当 additional 小于等于零时，不发生扩容；当
+HashSet
+剩余容量大于等于 additional 时，不发生扩容；当
+HashSet
+剩余容量小于 additional 时，取（原始容量的1.5倍向下取整）与（additional + 已使用容量）中的最大值进行扩容。
+参数：
+additional:
+Int64
+- 将要扩容的大小。
+异常：
+OverflowException
+- 当additional + 已使用容量超过Int64.Max时，抛出异常。
+func retain(Set<T>)
+public func retain(all!: Set<T>): Unit
+功能：从此
+HashSet
+中保留
+Set
+中的元素。
+参数：
+all!:
+Set
+<T> - 需要保留的
+Set
+。
+func subsetOf(ReadOnlySet<T>)
+public func subsetOf(other: ReadOnlySet<T>): Bool
+功能：检查该集合是否为其他
+ReadOnlySet
+的子集。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合，此函数将判断当前集合是否为 other 的子集。
+返回值：
+Bool
+- 如果该
+Set
+是指定
+ReadOnlySet
+的子集，则返回 true；否则返回 false。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个包含容器内所有元素的数组。
+返回值：
+Array
+<T> - T 类型数组。
+operator func &(ReadOnlySet<T>)
+public operator func &(other: ReadOnlySet<T>): HashSet<T>
+功能：返回包含两个集合交集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+HashSet
+<T> - T 类型集合。
+operator func |(ReadOnlySet<T>)
+public operator func |(other: ReadOnlySet<T>): HashSet<T>
+功能：返回包含两个集合并集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+HashSet
+<T> - T 类型集合。
+operator func -(ReadOnlySet<T>)
+public operator func -(other: ReadOnlySet<T>): HashSet<T>
+功能：返回包含两个集合差集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+HashSet
+<T> - T 类型集合。
+extend<T> HashSet<T> <: Equatable<HashSet<T>>
+extend<T> HashSet<T> <: Equatable<HashSet<T>>
+功能：为
+HashSet
+<T> 类型扩展
+Equatable
+<
+HashSet
+<T>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+HashSet
+<T>>
+operator func ==(HashSet<T>)
+public operator func ==(that: HashSet<T>): Bool
+功能：判断当前实例与参数指向的
+HashSet
+<T> 实例是否相等。
+两个
+HashSet
+<T> 相等指的是其中包含的元素完全相等。
+参数：
+that:
+HashSet
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(HashSet<T>)
+public operator func !=(that: HashSet<T>): Bool
+功能：判断当前实例与参数指向的
+HashSet
+<T> 实例是否不等。
+参数：
+that:
+HashSet
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+extend<T> HashSet<T> <: ToString where T <: ToString
+extend<T> HashSet<T> <: ToString where T <: ToString
+功能：为
+HashSet
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前
+HashSet
+<T> 实例转换为字符串。
+该字符串包含
+HashSet
+<T> 内每个元素的字符串表示，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。
+class LinkedListNode<T>
+public class LinkedListNode<T>
+功能：
+LinkedListNode
+是
+LinkedList
+上的节点。
+可以通过
+LinkedListNode
+对
+LinkedList
+进行前向后向遍历操作，也可以访问和修改元素的值。
+LinkedListNode
+只能通过对应
+LinkedList
+的 'nodeAt'、'firstNode'、'lastNode' 获得，当
+LinkedList
+删除掉对应的节点时，会造成一个悬空的节点，对悬空的节点进行任何操作都会抛 '
+IllegalStateException
+' 异常。
+prop next
+public prop next: Option<LinkedListNode<T>>
+功能：获取当前节点的下一个节点，如果没有则返回 None。
+类型：
+Option
+<
+LinkedListNode
+<T>>
+异常：
+IllegalStateException
+- 如果该节点不属于任何链表实例，抛此异常。
+prop prev
+public prop prev: Option<LinkedListNode<T>>
+功能：获取当前节点的前一个节点，如果没有则返回 None。
+类型：
+Option
+<
+LinkedListNode
+<T>>
+异常：
+IllegalStateException
+- 如果该节点不属于任何链表实例，抛此异常。
+prop value
+public mut prop value: T
+功能：获取或者修改元素的值。
+类型：T
+异常：
+IllegalStateException
+- 如果该节点不属于任何链表实例，抛此异常。
+class LinkedList<T>
+public class LinkedList<T> <: Collection<T> {
+    public init()
+    public init(elements: Collection<T>)
+    public init(elements: Array<T>)
+    public init(size: Int64, initElement: (Int64)-> T)
+}
+功能：实现双向链表的数据结构。
+双向链表是一种常见的数据结构，它由一系列节点组成，每个节点都包含两个指针，一个指向前一个节点，另一个指向后一个节点。这种结构允许在任何一个节点上进行双向遍历，即可以从头节点开始向后遍历，也可以从尾节点开始向前遍历。
+LinkedList
+不支持并发操作，并且对集合中元素的修改不会使迭代器失效，只有在添加和删除元素的时候会使迭代器失效。
+父类型：
+Collection
+<T>
+prop first
+public prop first: ?T
+功能：链表中第一个元素的值，如果是空链表则返回 None。
+类型：?T
+prop firstNode
+public prop firstNode: ?LinkedListNode<T>
+功能：获取链表中的第一个元素的节点。
+类型：?
+LinkedListNode
+<T>
+prop last
+public prop last: ?T
+功能：链表中最后一个元素的值，如果是空链表则返回 None。
+类型：?T
+prop lastNode
+public prop lastNode: ?LinkedListNode<T>
+功能：获取链表中的最后一个元素的节点。
+类型：?
+LinkedListNode
+<T>
+prop size
+public prop size: Int64
+功能：链表中的元素数量。
+类型：
+Int64
+init
+public init()
+功能：构造一个空的链表。
+init(Array<T>)
+public init(elements: Array<T>)
+功能：按照数组的遍历顺序构造一个包含指定集合元素的
+LinkedList
+实例。
+参数：
+elements:
+Array
+<T> - 将要放入此链表中的元素数组。
+init(Collection<T>)
+public init(elements: Collection<T>)
+功能：按照集合迭代器返回元素的顺序构造一个包含指定集合元素的链表。
+参数：
+elements:
+Collection
+<T> - 将要放入此链表中的元素集合。
+init(Int64, (Int64)-> T)
+public init(size: Int64, initElement: (Int64)-> T)
+功能：创建一个包含 size 个元素，且第 n 个元素满足 (
+Int64
+)-> T 条件的链表。
+参数：
+size:
+Int64
+- 要创建的链表元素数量。
+initElement: (
+Int64
+) ->T - 元素的初始化参数。
+异常：
+IllegalArgumentException
+- 如果指定的链表长度小于 0 则抛此异常。
+func addLast(T)
+public func addLast(element: T): LinkedListNode<T>
+功能：在链表的尾部位置添加一个元素，并且返回该元素的节点。
+参数：
+element: T - 要添加到链表中的元素。
+返回值：
+LinkedListNode
+<T> - 指向该元素的节点。
+func backward(LinkedListNode<T>)
+public func backward(mark: LinkedListNode<T>): Iterator<T>
+功能：获取一个从 mark 节点开始，到所对应链表的头部节点的所有元素的迭代器。
+参数：
+mark:
+LinkedListNode
+<T> - 开始的元素节点。
+返回值：
+Iterator
+<T> - 对应元素的迭代器。
+异常：
+IllegalStateException
+- 如果该节点不属于任何链表实例，抛此异常。
+func clear()
+public func clear(): Unit
+功能：删除链表中的所有元素。
+func forward(LinkedListNode<T>)
+public func forward(mark: LinkedListNode<T>): Iterator<T>
+功能：获取一个从 mark 节点开始，到所对应链表的尾部节点的所有元素的迭代器。
+参数：
+mark:
+LinkedListNode
+<T> - 开始的元素节点。
+返回值：
+Iterator
+<T> - 对应元素的迭代器。
+异常：
+IllegalStateException
+- 如果该节点不属于任何链表实例，抛此异常。
+func addAfter(LinkedListNode<T>,T)
+public func addAfter(node: LinkedListNode<T>, element: T): LinkedListNode<T>
+功能：在链表中指定节点的后面插入一个元素，并且返回该元素的节点。
+参数：
+node:
+LinkedListNode
+<T> - 指定的节点。
+element: T - 要添加到链表中的元素。
+返回值：
+LinkedListNode
+<T> - 指向被插入元素的节点。
+异常：
+IllegalArgumentException
+- 如果指定的节点不属于该链表，则抛此异常。
+func addBefore(LinkedListNode<T>,T)
+public func addBefore(node: LinkedListNode<T>, element: T): LinkedListNode<T>
+功能：在链表中指定节点的前面插入一个元素，并且返回该元素的节点。
+参数：
+node:
+LinkedListNode
+<T> - 指定的节点。
+element: T - 要添加到链表中的元素。
+返回值：
+LinkedListNode
+<T> - 指向被插入元素的节点。
+异常：
+IllegalArgumentException
+- 如果指定的节点不属于该链表，则抛此异常。
+func isEmpty()
+public func isEmpty(): Bool
+功能：返回此链表是否为空链表的判断。
+返回值：
+Bool
+- 如果此链表中不包含任何元素，返回 true。
+func iterator()
+public func iterator(): Iterator<T>
+功能：返回当前集合中元素的迭代器，其顺序是从链表的第一个节点到链表的最后一个节点。
+返回值：
+Iterator
+<T> - 当前集合中元素的迭代器。
+func nodeAt(Int64)
+public func nodeAt(index: Int64): Option<LinkedListNode<T>>
+功能：获取链表中的第 index 个元素的节点，编号从 0 开始。
+该函数的时间复杂度为 O(n)。
+参数：
+index:
+Int64
+- 指定获取第 index 个元素的节点。
+返回值：
+Option
+<
+LinkedListNode
+<T>> - 编号为 index 的节点，如果没有则返回 None。
+func removeFirst()
+public func removeFirst() : ?T
+功能：移除链表的第一个元素，并返回该元素的值。
+返回值：
+?T - 被删除的元素的值，若链表为空则返回 None。
+func removeLast()
+public func removeLast() : ?T
+功能：移除链表的最后一个元素，并返回该元素的值。
+返回值：
+?T - 被删除的元素的值，若链表为空则返回 None。
+func addFirst(T)
+public func addFirst(element: T): LinkedListNode<T>
+功能：在链表的头部位置插入一个元素，并且返回该元素的节点。
+参数：
+element: T - 要添加到链表中的元素。
+返回值：
+LinkedListNode
+<T> - 指向该元素的节点。
+func remove(LinkedListNode<T>)
+public func remove(node: LinkedListNode<T>): T
+功能：删除链表中指定节点。
+参数：
+node:
+LinkedListNode
+<T> - 要被删除的节点。
+返回值：
+T - 被删除的节点的值。
+异常：
+IllegalArgumentException
+- 如果指定的节点不属于该链表，则抛此异常。
+func removeIf((T)-> Bool)
+public func removeIf(predicate: (T)-> Bool): Unit
+功能：删除此链表中满足给定 lambda 表达式或函数的所有元素。
+参数：
+predicate: (T) ->
+Bool
+- 对于要删除的元素，返回值为 true。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+LinkedList
+内节点时，抛出异常。
+func reverse()
+public func reverse(): Unit
+功能：反转此链表中的元素顺序。
+func splitOff(LinkedListNode<T>)
+public func splitOff(node: LinkedListNode<T>): LinkedList<T>
+功能：从指定的节点 node 开始，将链表分割为两个链表，如果分割成功，node 不在当前的链表内，而是作为首个节点存在于新的链表内部。
+参数：
+node:
+LinkedListNode
+<T> - 要分割的位置。
+返回值：
+LinkedList
+<T> - 原链表分割后新产生的链表。
+异常：
+IllegalArgumentException
+- 如果指定的节点不属于该链表，则抛此异常。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个数组，数组包含该链表中的所有元素，并且顺序与链表的顺序相同。
+返回值：
+Array
+<T> - T 类型数组。
+extend<T> LinkedList<T> <: Equatable<LinkedList<T>> where T <: Equatable<T>
+extend<T> LinkedList<T> <: Equatable<LinkedList<T>> where T <: Equatable<T>
+功能：为
+LinkedList
+<T> 类型扩展
+Equatable
+<
+LinkedList
+<T>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+LinkedList
+<T>>
+operator func ==(LinkedList<T>)
+public operator func ==(right: LinkedList<T>): Bool
+功能：判断当前实例与参数指向的
+LinkedList
+<T> 实例是否相等。
+两个
+LinkedList
+<T> 相等指的是其中包含的元素完全相等。
+参数：
+right:
+LinkedList
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(LinkedList<T>)
+public operator func !=(right: LinkedList<T>): Bool
+功能：判断当前实例与参数指向的
+LinkedList
+<T> 实例是否不等。
+参数：
+right:
+LinkedList
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+extend<T> LinkedList<T> <: ToString where T <: ToString
+extend<T> LinkedList<T> <: ToString where T <: ToString
+功能：为
+LinkedList
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前
+LinkedList
+<T> 实例转换为字符串。
+该字符串包含
+LinkedList
+<T> 内每个元素的字符串表示，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。
+class TreeMap<K, V> where K <: Comparable<K>
+public class TreeMap<K, V> <: OrderedMap<K, V> where K <: Comparable<K> {
+    public init()
+    public init(elements: Collection<(K, V)>)
+    public init(elements: Array<(K,V)>)
+    public init(size: Int64, initElement: (Int64) -> (K, V))
+}
+功能：基于平衡二叉搜索树实现的
+OrderedMap
+接口实例。
+这个类的主要目的是提供一个有序的 key-value 存储结构，它可以快速地插入、删除、查找元素。
+TreeMap
+可以用于任何需要有序键值对存储的场景，例如数据库、缓存、查找表等。
+父类型：
+OrderedMap
+<K, V>
+prop first
+public prop first: ?(K, V)
+功能：获取
+TreeMap
+的第一个元素。
+返回值：
+Option
+<(K, V)> - 如果存在第一个元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<(K, V)>.None。
+prop last
+public prop last: ?(K, V)
+功能：获取
+TreeMap
+的最后一个元素。
+返回值：
+Option
+<(K, V)> - 如果存在最后一个元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<(K, V)>.None。
+prop size
+public prop size: Int64
+功能：返回键值的个数。
+类型：
+Int64
+init()
+public init()
+功能：构造一个空的
+TreeMap
+。
+init(Array<(K,V)>)
+public init(elements: Array<(K,V)>)
+功能：通过传入的键值对数组构造一个
+TreeMap
+。
+按照 elements 的先后顺序将元素插入到
+TreeMap
+内，由于
+TreeMap
+中不允许出现相同的键，如果 elements 中有相同的键时，后出现的键值对将会覆盖先出现的键值对。
+参数：
+elements:
+Array
+<(K, V)> - 初始化该
+TreeMap
+的键值对数组。
+init(Collection<(K, V)>)
+public init(elements: Collection<(K, V)>)
+功能：通过传入的键值对集合构造一个
+TreeMap
+。
+按照 elements 的迭代器顺序将元素插入到
+TreeMap
+内，由于
+TreeMap
+中不允许出现相同的键，如果 elements 中有相同的键时，后出现(迭代器顺序)的键值对将会覆盖先出现的键值对。
+参数：
+elements:
+Collection
+<(K, V)> - 初始化该
+TreeMap
+的键值对集合。
+init(Int64, (Int64) -> (K, V))
+public init(size: Int64, initElement: (Int64) -> (K, V))
+功能：通过传入的元素个数 size 和函数规则来构造
+TreeMap
+。
+参数：
+size:
+Int64
+- 传入的元素个数。
+initElement: (
+Int64
+) -> (K, V) - 初始化该
+TreeMap
+的函数规则。
+异常：
+IllegalArgumentException
+- 如果 size 小于 0 则抛出异常。
+func add(K, V)
+public func add(key: K, value: V): Option<V>
+功能：将新的键值对放入
+TreeMap
+中。对于
+TreeMap
+中已有的键，该键的值将被新值替换。
+参数：
+key: K - 要放置的键。
+value: V - 要分配的值。
+返回值：
+Option
+<V> - 如果赋值之前 key 存在，旧的 value 用
+Option
+封装并返回；否则，返回
+Option
+<V>.None。
+func add(Collection<(K, V)>)
+public func add(all!: Collection<(K, V)>): Unit
+功能：将新的键值对集合放入
+TreeMap
+中。对于
+TreeMap
+中已有的键，该键的值将被新值替换。
+参数：
+all!:
+Collection
+<(K, V)> - 需要添加进
+TreeMap
+的键值对集合。
+func backward(K, Bool)
+public func backward(mark: K, inclusive!: Bool = true): Iterator<(K, V)>
+功能：获取从第一个键小于等于 mark 的节点按降序遍历到
+first
+的迭代器。如果该节点的键等于 mark ，那么根据
+inclusive!
+确定是否包含该键对应的节点。
+参数：
+mark: K - 用于确定从哪里开始的键。
+inclusive!:
+Bool
+- 当
+mark
+是迭代器的首个元素的 key 时，指定是否包含 mark 作为起始点，默认为
+true
+。
+返回值：
+Iterator
+<(K, V)> - 对应元素的迭代器。
+func clear()
+public func clear(): Unit
+功能：清除所有键值对。
+func clone()
+public func clone(): TreeMap<K, V>
+功能：克隆
+TreeMap
+。
+返回值：
+TreeMap
+<K, V> - 返回一个
+TreeMap
+实例。
+func contains(K)
+public func contains(key: K): Bool
+功能：判断是否包含指定键的映射。
+参数：
+key: K - 传递要判断的 key。
+返回值：
+Bool
+- 如果存在，则返回 true；否则，返回 false。
+func contains(Collection<K>)
+public func contains(all!: Collection<K>): Bool
+功能：判断是否包含指定集合键的映射。
+参数：
+all!:
+Collection
+<K> - 键的集合。
+返回值：
+Bool
+- 如果存在，则返回 true；否则，返回 false。
+func entryView(K)
+public func entryView(k: K): MapEntryView<K, V>
+功能：如果不包含特定键，返回一个空的引用视图。如果包含特定键，则返回该键对应的元素的引用视图。
+参数：
+k: K - 要添加的键值对的键。
+返回值：
+MapEntryView
+<K, V> - 一个引用视图。
+func forward(K, Bool)
+public func forward(mark: K, inclusive!: Bool = true): Iterator<(K, V)>
+功能：获取从第一个键大于等于 mark 的节点按升序遍历到
+last
+结束的一个迭代器。如果该节点的键等于 mark ，那么根据
+inclusive!
+确定是否包含该键对应的节点。
+参数：
+mark: K - 用于确定从哪里开始的键。
+inclusive!:
+Bool
+- 当
+mark
+是迭代器的首个元素的 key 时，指定是否包含 mark 作为起始点，默认为
+true
+。
+返回值：
+Iterator
+<(K, V)> - 对应元素的迭代器。
+func get(K)
+public func get(key: K): ?V
+功能：返回指定键映射的值。
+参数：
+key: K - 指定的键。
+返回值：
+?V - 如果存在这样一个值，用
+Option
+封装该值并返回；否则，返回
+Option
+<V>.None。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断
+TreeMap
+是否为空。
+返回值：
+Bool
+- 如果为空，返回 true，否则返回 false。
+func iterator()
+public func iterator(): Iterator<(K, V)>
+功能：返回
+TreeMap
+的迭代器，迭代器按 Key 值从小到大的顺序迭代。
+返回值：
+Iterator
+<(K, V)> -
+TreeMap
+的迭代器。
+func keys()
+public func keys(): EquatableCollection<K>
+功能：返回
+TreeMap
+中所有的 key，并将所有 key 存储在一个容器中。
+返回值：
+EquatableCollection
+<K> - 包含所有键的集合。
+func removeFirst()
+public func removeFirst(): ?(K, V)
+功能：删除
+TreeMap
+的第一个元素。
+返回值：
+?(K, V) - 如果存在第一个元素，那么删除该元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<(K, V)>.None。
+func removeLast()
+public func removeLast(): ?(K, V)
+功能：删除
+TreeMap
+的最后一个元素。
+返回值：
+?(K, V) - 如果存在最后一个元素，那么删除该元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<(K, V)>.None。
+func remove(K)
+public func remove(key: K): Option<V>
+功能：从此映射中删除指定键的映射（如果存在）。
+参数：
+key: K - 传入要删除的 key。
+返回值：
+Option
+<V> - 被移除映射的值用
+Option
+封装，如果
+TreeMap
+中不存在指定的键，返回 None。
+func remove(Collection<K>)
+public func remove(all!: Collection<K>): Unit
+功能：从此映射中删除指定集合的映射（如果存在）。
+参数：
+all!:
+Collection
+<K> - 传入要删除的键的集合。
+func removeIf((K, V) -> Bool)
+public func removeIf(predicate: (K, V) -> Bool): Unit
+功能：传入 lambda 表达式，如果满足条件，则删除对应的键值。
+参数：
+predicate: (K, V) ->
+Bool
+- 传递一个 lambda 表达式进行判断。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+TreeMap
+内键值对时，抛出异常。
+func values()
+public func values(): Collection<V>
+功能：返回
+TreeMap
+中包含的值，并将所有的 value 存储在一个容器中。
+返回值：
+Collection
+<V> - 包含所有值的集合。
+operator func [](K, V)
+public operator func [](key: K, value!: V): Unit
+功能：运算符重载集合，如果键存在，新 value 覆盖旧 value，如果键不存在，添加此键值对。
+参数：
+key: K - 传递值进行判断。
+value!: V - 传递要设置的值。
+operator func [](K)
+public operator func [](key: K): V
+功能：运算符重载集合，如果键存在，返回键对应的值。
+参数：
+key: K - 传递值进行判断。
+返回值：
+V - 与键对应的值。
+异常：
+NoneValueException
+- 如果该
+HashMap
+不存在该键，抛出异常。
+extend<K, V> TreeMap<K, V> <: Equatable<TreeMap<K, V>> where V <: Equatable<V>
+extend<K, V> TreeMap<K, V> <: Equatable<TreeMap<K, V>> where V <: Equatable<V>
+功能：为
+TreeMap
+<K, V> 类型扩展
+Equatable
+<
+TreeMap
+<K, V>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+TreeMap
+<K, V>>
+operator func ==(TreeMap<K, V>)
+public operator func ==(right: TreeMap<K, V>): Bool
+功能：判断当前实例与参数指向的
+TreeMap
+<K, V> 实例是否相等。
+两个
+TreeMap
+<K, V> 相等指的是其中包含的键值对完全相等。
+参数：
+right:
+TreeMap
+<K, V> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(TreeMap<K, V>)
+public operator func !=(right: TreeMap<K, V>): Bool
+功能：判断当前实例与参数指向的
+TreeMap
+<K, V> 实例是否不等。
+参数：
+right:
+TreeMap
+<K, V> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+extend<K, V> TreeMap<K, V> <: ToString where V <: ToString, K <: ToString & Comparable<K>
+extend<K, V> TreeMap<K, V> <: ToString where V <: ToString, K <: ToString & Comparable<K>
+功能：为
+TreeMap
+<K, V> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前
+TreeMap
+<K, V> 实例转换为字符串。
+该字符串包含
+TreeMap
+<K, V> 内每个键值对的字符串表示，形如："[(k1, v1), (k2, v2), (k3, v3)]"。
+返回值：
+String
+- 转换得到的字符串。
+class TreeSet<T> where T <: Comparable<T>
+public class TreeSet<T> <: OrderedSet<T> where T <: Comparable<T> {
+    public init()
+    public init(elements: Collection<T>)
+    public init(size: Int64, initElement: (Int64) -> T)
+}
+功能：基于
+TreeMap
+实现的
+Set
+接口的实例。
+这个类的主要目的是提供一个有序的元素存储结构，它可以快速地插入、删除、查找元素。
+TreeSet
+可以用于任何需要有序元素存储的场景，例如数据库、缓存、查找表等。
+父类型：
+OrderedSet
+<T>
+prop first
+public prop first: ?T
+功能：获取
+TreeSet
+的第一个元素。
+类型：?T - 如果存在第一个元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<T>.None。
+prop last
+public prop last: ?T
+功能：获取
+TreeSet
+的最后一个元素。
+类型：?T - 如果存在最后一个元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<T>.None。
+prop size
+public prop size: Int64
+功能：返回元素的个数。
+类型：
+Int64
+init()
+public init()
+功能：构造一个空的
+TreeSet
+。
+init(Collection<T>)
+public init(elements: Collection<T>)
+功能：通过传入的元素集合构造一个
+TreeSet
+。
+按照 elements 的迭代器顺序将元素插入到
+TreeSet
+内，由于
+TreeSet
+中不允许出现相同的元素，如果 elements 中有多个相同的元素时，
+TreeSet
+只会保留一个元素。
+参数：
+elements:
+Collection
+<T> - 初始化该
+TreeSet
+的元素集合。
+init(Int64, (Int64) -> T)
+public init(size: Int64, initElement: (Int64) -> T)
+功能：通过传入的元素个数 size 和函数规则来构造
+TreeSet
+。
+参数：
+size:
+Int64
+- 传入的元素个数。
+initElement: (
+Int64
+) -> T - 初始化该
+TreeSet
+的函数规则。
+异常：
+IllegalArgumentException
+- 如果 size 小于 0 则抛出异常。
+static func of(Array<T>)
+public static func of(elements: Array<T>): TreeSet<T>
+功能：构造一个包含指定数组中所有元素的
+TreeSet
+。
+按照 elements 的先后顺序将元素插入到
+TreeSet
+内，由于
+TreeSet
+中不允许出现相同的元素，如果 elements 中有多个相同的元素时，
+TreeSet
+只会保留一个元素。
+参数：
+elements:
+Array
+<T> - 传入数组。
+返回值：
+TreeSet
+<T> - 元素为 T 类型的
+TreeSet
+。
+func add(T)
+public func add(element: T): Bool
+功能：将新的元素放入
+TreeSet
+中。若添加的元素在
+TreeSet
+中存在, 则添加失败。
+参数：
+element: T - 指定的元素。
+返回值：
+Bool
+- 如果添加成功，则返回 true；否则，返回 false。
+func add(Collection<T>)
+public func add(all!: Collection<T>): Unit
+功能：添加
+Collection
+中的所有元素至此
+TreeSet
+中，如果元素存在，则不添加。
+参数：
+all!:
+Collection
+<T> - 需要被添加的元素的集合。
+func backward(T, Bool)
+public func backward(mark: T, inclusive!: Bool = true): Iterator<T>
+功能：获取从第一个键小于等于 mark 的节点按降序遍历到
+first
+的迭代器。如果该节点的键等于 mark ，那么根据
+inclusive!
+确定是否包含该键对应的节点。
+参数：
+mark: T - 用于确定从哪里开始的元素。
+inclusive!:
+Bool
+- 当
+mark
+是迭代器的首个元素时，指定是否包含 mark 作为起始点，默认为
+true
+。
+返回值：
+Iterator
+<T> - 对应元素的迭代器。
+func clear()
+public func clear(): Unit
+功能：清除所有元素。
+func clone()
+public func clone(): TreeSet<T>
+功能：克隆
+TreeSet
+。
+返回值：
+TreeSet
+<T> - 返回一个
+TreeSet
+实例。
+func contains(T)
+public func contains(element: T): Bool
+功能：判断是否包含指定元素。
+参数：
+element: T - 指定的元素。
+返回值：
+Bool
+- 如果包含指定元素，则返回 true；否则，返回 false。
+func contains(Collection<T>)
+public func contains(all!: Collection<T>): Bool
+功能：判断
+TreeSet
+是否包含指定
+Collection
+中的所有元素。
+参数：
+all!:
+Collection
+<T> - 指定的元素集合。
+返回值：
+Bool
+- 如果此
+TreeSet
+包含
+Collection
+中的所有元素，则返回 true；否则，返回 false。
+func forward(T, Bool)
+public func forward(mark: T, inclusive!: Bool = true): Iterator<T>
+功能：获取从第一个元素大于等于 mark 的节点按升序遍历到
+last
+结束的一个迭代器。如果该节点的元素等于 mark ，那么根据
+inclusive!
+确定是否包含该元素对应的节点。
+参数：
+mark: T - 用于确定从哪里开始的元素。
+inclusive!:
+Bool
+- 当
+mark
+是迭代器的首个元素时，指定是否包含 mark 作为起始点，默认为
+true
+。
+返回值：
+Iterator
+<T> - 对应元素的迭代器。
+func isEmpty()
+public func isEmpty(): Bool
+功能：判断
+TreeSet
+是否为空。
+返回值：
+Bool
+- 如果为空，返回 true，否则返回 false。
+func iterator()
+public func iterator(): Iterator<T>
+功能：返回
+TreeSet
+的迭代器，迭代器按元素值从小到大的顺序迭代。
+返回值：
+Iterator
+<T> -
+TreeSet
+的迭代器。
+func removeFirst()
+public func removeFirst(): ?T
+功能：删除
+TreeSet
+的第一个元素。
+返回值：
+?T - 如果存在第一个元素，那么删除该元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<T>.None。
+func removeLast()
+public func removeLast(): ?T
+功能：删除
+TreeSet
+的最后一个元素。
+返回值：
+?T - 如果存在最后一个元素，那么删除该元素，用
+Option
+封装该元素并返回；否则返回
+Option
+<T>.None。
+func remove(T)
+public func remove(element: T): Bool
+功能：如果指定元素存在于此
+TreeSet
+中，则将其移除。
+参数：
+element: T - 需要被移除的元素。
+返回值：
+Bool
+- true，表示移除成功；false，表示移除失败。
+func remove(Collection<T>)
+public func remove(all!: Collection<T>): Unit
+功能：移除此
+TreeSet
+中那些也包含在指定
+Collection
+中的所有元素。
+参数：
+all!:
+Collection
+<T> - 需要从此
+TreeSet
+中移除的元素的集合。
+func removeIf((T) -> Bool)
+public func removeIf(predicate: (T) -> Bool): Unit
+功能：传入 lambda 表达式，如果满足
+true
+条件，则删除对应的元素。
+参数：
+predicate: (T) ->
+Bool
+- 是否删除元素的判断条件。
+异常：
+ConcurrentModificationException
+- 当
+predicate
+中增删或者修改
+TreeSet
+内元素时，抛出异常。
+func retain(Set<T>)
+public func retain(all!: Set<T>): Unit
+功能：从此
+TreeSet
+中保留
+Set
+中的元素，其他元素将被移除。
+参数：
+all!:
+Set
+<T> - 需要保留的
+Set
+。
+func subsetOf(ReadOnlySet<T>)
+public func subsetOf(other: ReadOnlySet<T>): Bool
+功能：检查该集合是否为其他
+ReadOnlySet
+的子集。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合，此函数将判断当前集合是否为 other 的子集。
+返回值：
+Bool
+- 如果该
+TreeSet
+是指定
+ReadOnlySet
+的子集，则返回 true；否则返回 false。
+func toArray()
+public func toArray(): Array<T>
+功能：返回一个包含容器内所有元素的数组。
+返回值：
+Array
+<T> - T 类型数组。
+operator func &(ReadOnlySet<T>)
+public operator func &(other: ReadOnlySet<T>): TreeSet<T>
+功能：返回包含两个集合交集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+TreeSet
+<T> - T 类型集合。
+operator func |(ReadOnlySet<T>)
+public operator func |(other: ReadOnlySet<T>): TreeSet<T>
+功能：返回包含两个集合并集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+TreeSet
+<T> - T 类型集合。
+operator func -(ReadOnlySet<T>)
+public operator func -(other: ReadOnlySet<T>): TreeSet<T>
+功能：返回包含两个集合差集的元素的新集合。
+参数：
+other:
+ReadOnlySet
+<T> - 传入集合。
+返回值：
+TreeSet
+<T> - T 类型集合。
+extend<T> TreeSet<T> <: Equatable<TreeSet<T>>
+extend<T> TreeSet<T> <: Equatable<TreeSet<T>>
+功能：为
+TreeSet
+<T> 类型扩展
+Equatable
+<
+TreeSet
+<T>> 接口，支持判等操作。
+父类型：
+Equatable
+<
+TreeSet
+<T>>
+operator func ==(TreeSet<T>)
+public operator func ==(that: TreeSet<T>): Bool
+功能：判断当前实例与参数指向的
+TreeSet
+<T> 实例是否相等。
+两个
+TreeSet
+<T> 相等指的是其中包含的元素完全相等。
+参数：
+that:
+TreeSet
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果相等，则返回 true，否则返回 false。
+operator func !=(TreeSet<T>)
+public operator func !=(that: TreeSet<T>): Bool
+功能：判断当前实例与参数指向的
+TreeSet
+<T> 实例是否不等。
+参数：
+that:
+TreeSet
+<T> - 被比较的对象。
+返回值：
+Bool
+- 如果不等，则返回 true，否则返回 false。
+extend<T> TreeSet<T> <: ToString where T <: ToString
+extend<T> TreeSet<T> <: ToString where T <: ToString
+功能：为
+TreeSet
+<T> 扩展
+ToString
+接口，支持转字符串操作。
+父类型：
+ToString
+func toString()
+public func toString(): String
+功能：将当前
+TreeSet
+<T> 实例转换为字符串。
+该字符串包含
+TreeSet
+<T> 内每个元素的字符串表示，形如："[elem1, elem2, elem3]"。
+返回值：
+String
+- 转换得到的字符串。

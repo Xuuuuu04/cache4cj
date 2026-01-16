@@ -1,0 +1,42 @@
+# 构建产物
+target/
+*.o
+*.exe
+*.dll
+*.so
+*.dylib
+
+# CJPM 相关
+cjpm.lock
+.cjpm/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 测试和临时文件
+*.tmp
+*.log
+*.bak
+
+# 文档草稿（保留最终报告）
+*.md.backup
+ANALYSIS_SUMMARY.md
+COMPARISON.md
+DETAILED_COMPARISON.md
+ARCHITECTURE_ANALYSIS.md
+FINAL_REPORT.md
+
+# Go-cache 原始仓库（参考用）
+go-cache/
+
+# Claude 相关（私有配置）
+.claude/
+.spec-workflow/

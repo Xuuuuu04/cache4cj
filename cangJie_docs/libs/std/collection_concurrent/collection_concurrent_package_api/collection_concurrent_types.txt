@@ -1,0 +1,21 @@
+类型别名
+type BlockingQueue<E>
+(deprecated)
+public type BlockingQueue<E> = LinkedBlockingQueue<E>
+功能：
+LinkedBlockingQueue
+<E> 的别名。
+注意：
+未来版本即将废弃，使用
+LinkedBlockingQueue
+<E> 替代。
+type NonBlockingQueue<E>
+(deprecated)
+public type NonBlockingQueue<E> = ConcurrentLinkedQueue<E>
+功能：
+ConcurrentLinkedQueue
+<E> 的别名。
+注意：
+未来版本即将废弃，使用
+ConcurrentLinkedQueue
+<E> 替代。

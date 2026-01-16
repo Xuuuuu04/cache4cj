@@ -1,0 +1,16 @@
+[package]
+cjc-version = "1.0.0"
+name = "cache4cj"
+version = "0.1.0"
+description = "一个高性能的仓颉内存缓存库,支持过期时间和自动清理"
+output-type = "static"
+src-dir = ""
+target-dir = ""
+
+[dependencies]
+# 暂无外部依赖
+
+[build-options]
+# 编译选项
+optimize = "O2"
+debug-info = true
