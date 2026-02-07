@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build/Test with cjpm if available
+        run: |
+          if command -v cjpm >/dev/null 2>&1; then
+            cjpm build
+            cjpm test
+          else
+            echo "cjpm is not preinstalled on GitHub runner; skipping."
+          fi
