@@ -653,3 +653,6 @@ let remaining = getRemainingTime(expiration)
 ## 致谢
 
 感谢 [patrickmn/go-cache](https://github.com/patrickmn/go-cache) 提供的优秀设计灵感。
+
+## 目录结构
+- 结构说明：[`doc/PROJECT_STRUCTURE.md`](./doc/PROJECT_STRUCTURE.md)
